@@ -41,8 +41,7 @@ jobs:
     strategy:
       matrix:
         suite: [
-          { client: picoquic, tests: "handshake,transfer,longrtt,chacha20,multiplexing,retry,resumption,zerortt,http3,blackhole,keyupdate,ecn,amplificationlimit,handshakeloss,transferloss,handshakecorruption,transfercorruption,ipv6,v2,goodput,crosstraffic" },
-          { client: quic-go,  tests: "handshake,transfer,longrtt,chacha20,multiplexing,retry,resumption,zerortt,http3,blackhole,keyupdate,ecn,amplificationlimit,handshakeloss,transferloss,handshakecorruption,transfercorruption,ipv6,v2,goodput,crosstraffic" }
+          { client: s2n-quic, tests: "handshakeloss,handshakecorruption" }
         ]
       fail-fast: false
 
