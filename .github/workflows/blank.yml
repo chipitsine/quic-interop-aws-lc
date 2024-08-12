@@ -37,7 +37,7 @@ jobs:
     strategy:
       matrix:
         suite: [
-          { client: quic-go, tests: "handshakeloss,handshakecorruption" }
+          { client: picoquic, tests: "handshakeloss,handshakecorruption" }
         ]
       fail-fast: false
 
