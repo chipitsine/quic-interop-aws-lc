@@ -37,7 +37,7 @@ jobs:
     strategy:
       matrix:
         suite: [
-          { client: picoquic, tests: "handshakeloss,handshakecorruption" }
+          { client: ngtcp2, tests: "handshakeloss,handshakecorruption" }
         ]
       fail-fast: false
 
