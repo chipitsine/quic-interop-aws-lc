@@ -37,7 +37,7 @@ jobs:
     strategy:
       matrix:
         suite: [
-          { client: ngtcp2, tests: "handshakeloss,handshakecorruption" }
+          { client: chrome, tests: "http3" }
         ]
       fail-fast: false
 
@@ -62,13 +62,14 @@ jobs:
       - name: Pull image
         run: |
           docker pull ghcr.io/${{ github.repository }}:aws-lc
-
+          docker pull chipitsine/chrome-quic-interop-runner:latest
+          
       - name: Run
         run: |
           git clone https://github.com/quic-interop/quic-interop-runner
           cd quic-interop-runner
           pip install -r requirements.txt --break-system-packages
-          python run.py -l logs -r haproxy=ghcr.io/${{ github.repository }}:aws-lc -c ${{ matrix.suite.client }} -s haproxy
+          python run.py -l logs -r haproxy=ghcr.io/${{ github.repository }}:aws-lc -r chipitsine/chrome-quic-interop-runner -c ${{ matrix.suite.client }} -s haproxy
 
       - name: Logs
         if: always()
